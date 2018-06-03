@@ -128,11 +128,12 @@ const activateNetwork = (code, input) => {
       // Get the network from cache
       let network = cache.get(`${code}/network`)
     
+      // Normalize the input
       let normalizedInput = normalizeInput(input)
 
       // Activate the network, obtaining the output
       let output = network.activate(normalizedInput)
-    
+      
       // Convert the output back
       let key = convertOutput(output)
 
