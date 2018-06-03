@@ -26,12 +26,12 @@ const createNetwork = data => {
       let code = generateCode()
 
       // Creates the network and the trainer
-      const perceptron = new networkService.Perceptron(1, 3, 4)
+      const perceptron = new networkService.Perceptron(1, 5, 4)
       const trainer = new Trainer(perceptron)
 
       // Normalize the data
       let normalizedData = normalizeData(data)
-
+      
       // Trains the network and store the result
       let trainingResult = trainer.train(normalizedData)
 
@@ -127,7 +127,7 @@ const activateNetwork = (code, input) => {
     try {
       // Get the network from cache
       let network = cache.get(`${code}/network`)
-    
+
       // Normalize the input
       let normalizedInput = normalizeInput(input)
 
