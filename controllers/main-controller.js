@@ -4,7 +4,7 @@ const randomstring = require('randomstring')
 
 /**
  * Creates a new Neural Network, trains it with the provided data and generates a code to access the network
- * @param {*} data Data to train the Neural Network
+ * @param {Object[]} data Data to train the Neural Network
  * @returns {string} The exclusive code to access the Neural Network
  */
 const createNetwork = data => {
