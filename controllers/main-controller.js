@@ -2,6 +2,7 @@
 const cache = require('memory-cache')
 const randomstring = require('randomstring')
 
+
 /**
  * Creates a new Neural Network, trains it with the provided data and generates a code to access the network
  * @param {Object[]} data Data to train the Neural Network
@@ -32,6 +33,7 @@ const generateCode = () => {
 
   return code
 }
+
 
 module.exports = {
   createNetwork
