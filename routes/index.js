@@ -23,7 +23,7 @@ router.post('/network', (req, res) => {
 })
 
 router.post('/network/:code/activate', (req, res) => {
-  mainController.activateNetwork(req.params.code, req.body)
+  mainController.activateNetwork(req.params.code, req.body.input)
     .then(key => {
       res.status(200).send(key)
     })
