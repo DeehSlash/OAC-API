@@ -22,5 +22,15 @@ router.post('/network', (req, res) => {
     })
 })
 
+router.post('/network/:code/activate', (req, res) => {
+  mainController.activateNetwork(req.params.code, req.body)
+    .then(key => {
+      res.status(200).send(key)
+    })
+    .catch(e => {
+      res.status(500).send(e.message)
+    })
+})
+
 
 module.exports = router
