@@ -14,8 +14,8 @@ router.get('/', (req, res) => {
 // Creates a new network
 router.post('/network', (req, res) => {
   mainController.createNetwork(req.body)
-    .then(code => {
-      res.status(201).send(code)
+    .then(result => {
+      res.status(201).send(result)
     })
     .catch(e => {
       res.status(500).send(e.message)

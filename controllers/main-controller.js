@@ -26,14 +26,14 @@ const createNetwork = data => {
       let code = generateCode()
 
       // Creates the network and the trainer
-      const perceptron = new networkService.Perceptron(1, 5, 4)
+      const perceptron = new networkService.Perceptron(1, 3, 4)
       const trainer = new Trainer(perceptron)
 
       // Normalize the data
       let normalizedData = normalizeData(data)
 
-      // Trains the network
-      trainer.train(normalizedData)
+      // Trains the network and store the result
+      let trainingResult = trainer.train(normalizedData)
 
       // Stores the network and the trainer
       cache.put(`${code}/network`, perceptron)
@@ -41,8 +41,8 @@ const createNetwork = data => {
 
       console.log(`Network created with code ${code}`)
 
-      // Resolve the promise returning the code
-      resolve(code)
+      // Resolve the promise returning the code and the training result
+      resolve({ code, trainingResult })
     } catch (e) {
       reject(e)
     }
