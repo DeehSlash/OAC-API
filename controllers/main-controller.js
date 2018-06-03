@@ -1,5 +1,6 @@
 // Modules
 const cache = require('memory-cache')
+const randomstring = require('randomstring')
 
 /**
  * Creates a new Neural Network, trains it with the provided data and generates a code to access the network
@@ -19,10 +20,11 @@ const createNetwork = data => {
  * @returns {string} The generated code
  */
 const generateCode = () => {
+  let code = ''
+
   // Keep generating while the code already exists
   do {
-    // TODO: Create an algorithm to generate the code
-    let code = 'aaa'
+    code = randomstring.generate(6)
   } while (cache.get(code))
 
   // Stores the code
