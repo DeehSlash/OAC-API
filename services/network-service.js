@@ -1,10 +1,20 @@
+// Modules
+const synaptic = require('synaptic')
+
+const Neuron    =   synaptic.Neuron,
+    	Layer     =   synaptic.Layer,
+	    Network   =   synaptic.Network,
+	    Trainer   =   synaptic.Trainer,
+      Architect =   synaptic.Architect
+
+
 /**
  * Perceptron constructor
  * @param {number} input Number of neurons in the input layer
  * @param {number} hidden Number of neurons in the hidden layer
  * @param {number} output Number of neurons in the output layer
  */
-const Perceptron = (input, hidden, output) => {
+function Perceptron (input, hidden, output) {
 	// Create the layers
 	var inputLayer = new Layer(input)
 	var hiddenLayer = new Layer(hidden)
