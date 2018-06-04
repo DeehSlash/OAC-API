@@ -32,5 +32,18 @@ router.post('/network/:code/activate', (req, res) => {
     })
 })
 
+router.get('/network/:code/exists', (req, res) => {
+  mainController.codeExists(req.params.code)
+    .then(result => {
+      if(result)
+        res.sendStatus(200)
+      else
+        res.sendStatus(404)
+    })
+    .catch(e => {
+      res.status(500).send(e.message)
+    })
+})
+
 
 module.exports = router

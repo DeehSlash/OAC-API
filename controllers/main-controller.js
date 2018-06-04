@@ -168,8 +168,24 @@ const convertOutput = output => {
   return ''
 }
 
+/**
+ * Checks if the given network code exists
+ * @param {string} code Code to be checked
+ * @returns {boolean} True if the code exists, false if it doesn't
+ */
+const codeExists = code => {
+  return new Promise((resolve, reject) => {
+    try {
+      resolve(cache.get(code))
+    } catch (e) {
+      reject(e)
+    }
+  })
+}
+
 
 module.exports = {
   createNetwork,
-  activateNetwork
+  activateNetwork,
+  codeExists
 }
