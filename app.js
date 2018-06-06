@@ -21,6 +21,11 @@ app.use((req, res, next) => {
   next()
 })
 
+app.options('*', (req, res, next) => {
+  res.send(200)
+  next()
+})
+
 app.use('/', routes)
 
 networkService.extendPrototype()
