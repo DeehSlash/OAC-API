@@ -26,20 +26,18 @@ const createNetwork = data => {
       let code = generateCode()
 
       // Creates the network and the trainer
-      const perceptron = new networkService.Perceptron(1, 5, 4)
+      const perceptron = new networkService.Perceptron(3, 7, 4)
       const trainer = new Trainer(perceptron)
 
       // Normalize the data
       let normalizedData = normalizeData(data)
-      
+
       // Trains the network and store the result
       let trainingResult = trainer.train(normalizedData)
 
       // Stores the network and the trainer
       cache.put(`${code}/network`, perceptron)
       cache.put(`${code}/trainer`, trainer)
-
-      console.log(`Network created with code ${code}`)
 
       // Resolve the promise returning the code and the training result
       resolve({ code, trainingResult })
@@ -82,7 +80,8 @@ const normalizeData = data => {
   for (let i = 0; i < data.length; i++) {
 
     // Normalizes input
-    data[i].input[0] = data[i].input[0] / 50
+    for (let j = 0; j < 3; j++)
+      data[i].input[j] = data[i].input[j] / 31
 
     // Normalizes output
     switch(data[i].output[0]) {
@@ -111,7 +110,7 @@ const normalizeData = data => {
  */
 const normalizeInput = input => {
   for (let i = 0; i < input.length; i++) {
-    input[i] = input[i] / 50
+    input[i] = input[i] / 31
   }
 
   return input
@@ -133,7 +132,7 @@ const activateNetwork = (code, input) => {
 
       // Activate the network, obtaining the output
       let output = network.activate(normalizedInput)
-      
+
       // Convert the output back
       let key = convertOutput(output)
 
