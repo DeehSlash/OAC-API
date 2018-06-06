@@ -39,6 +39,9 @@ const createNetwork = data => {
       cache.put(`${code}/network`, perceptron)
       cache.put(`${code}/trainer`, trainer)
 
+      // Log the created network
+      console.log(`Network created with code ${code}`)
+
       // Resolve the promise returning the code and the training result
       resolve({ code, trainingResult })
     } catch (e) {
